@@ -17,16 +17,16 @@
 					<a href="index.html">Inicio</a>
 				</li>
 				<li>
-					<a href="features.html">Cat&aacute;logo</a>
+					<a href="catalogo.html">Cat&aacute;logo</a>
 				</li>
 				<li class="active">
-					<a href="news.html">Noticias</a>
+					<a href="noticias.php">Noticias</a>
 				</li>
 				<li>
-					<a href="about.html">Subir</a>
+					<a href="subir.html">Subir</a>
 				</li>
 				<li>
-					<a href="contact.html">Contacto</a>
+					<a href="contacto.html">Contacto</a>
 				</li>
 			</ul>
 		</div>
