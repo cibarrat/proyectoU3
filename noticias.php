@@ -1,3 +1,11 @@
+<?php
+	include_once('conexion.inc.php');
+	$link=conectar();
+	$qry_noticias="call sp_obtener_noticias()";
+    $rst_noticias=$link->Execute($qry_noticias);
+	$meses[]= array('x','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto','Septiembre','Noviembre','Diciembre');
+?>
+
 <!DOCTYPE HTML>
 <!-- Website template by freewebsitetemplates.com -->
 <html>
@@ -36,8 +44,23 @@
 			<h1>Noticias</h1>
 			<ul class="news">
 				<?php
-					//Insertar aqui codigo para agregado dinamico de noticias
+					if($rst_noticias->RecordCount()){
+						while(!$rst_noticias->EOF){
 				?>
+				<div class="date">
+					<p>
+						<span><?php print $rst_noticias->fields('Mes'); ?></span>
+						<?php print $rst_noticias->fields('Ano'); ?>
+					</p>
+				</div>
+				<h1><?php print $rst_noticias->fields('Titulo'); ?><span class="author"><?php print $rst_noticias->fields('Autor'); ?> <?php //print $meses[$rst_noticias->fields('Mes')]; ?> <?php print $rst_noticias->fields('Ano'); ?></span></h1>
+				<p>
+					<?php print $rst_noticias->fields('Contenido'); ?>
+				</p>
+					<?php
+						$rst_noticias->MoveNext();
+						}
+					}?>
 			</ul>
 		</div>
 		<div class="sidebar">
