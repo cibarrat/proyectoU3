@@ -3,7 +3,7 @@
 	$link=conectar();
 	$qry_noticias="call sp_obtener_noticias()";
     $rst_noticias=$link->Execute($qry_noticias);
-	$meses[]= array('x','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto','Septiembre','Noviembre','Diciembre');
+	$meses= array('x','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto','Septiembre','Noviembre','Diciembre');
 ?>
 
 <!DOCTYPE HTML>
@@ -47,20 +47,22 @@
 					if($rst_noticias->RecordCount()){
 						while(!$rst_noticias->EOF){
 				?>
-				<div class="date">
+				<li>
+					<div class="date">
+						<p>
+							<span><?php print $rst_noticias->fields('Mes'); ?></span>
+							<?php print $rst_noticias->fields('Ano'); ?>
+						</p>
+					</div>
+					<h2><?php print $rst_noticias->fields('Titulo'); ?><span class="author"><?php print $rst_noticias->fields('Autor'); ?> <?php print $meses[$rst_noticias->fields('Mes')]; ?> <?php print $rst_noticias->fields('Ano'); ?></span></h1>
 					<p>
-						<span><?php print $rst_noticias->fields('Mes'); ?></span>
-						<?php print $rst_noticias->fields('Ano'); ?>
+						<?php print $rst_noticias->fields('Contenido'); ?>
 					</p>
-				</div>
-				<h1><?php print $rst_noticias->fields('Titulo'); ?><span class="author"><?php print $rst_noticias->fields('Autor'); ?> <?php //print $meses[$rst_noticias->fields('Mes')]; ?> <?php print $rst_noticias->fields('Ano'); ?></span></h1>
-				<p>
-					<?php print $rst_noticias->fields('Contenido'); ?>
-				</p>
-					<?php
-						$rst_noticias->MoveNext();
-						}
-					}?>
+				</li>
+						<?php
+							$rst_noticias->MoveNext();
+							}
+						}?>
 			</ul>
 		</div>
 		<div class="sidebar">
