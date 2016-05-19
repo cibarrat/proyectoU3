@@ -9,7 +9,7 @@ function conectar()
     
     die("Imposible crear la conexi&oacute;n");
   }
-  if(!$link->Connect("localhost", "root", "", "cafe"))
+  if(!$link->Connect("localhost", "root", "cesarin", "cafe"))
    {
     print "Falla en la conexi&oacute;n ".$link->ErrorMsg();
     die;

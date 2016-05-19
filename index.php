@@ -10,7 +10,7 @@
 	<div id="header">
 		<div>
 			<div class="logo">
-				<a href="index.html">Zero Type</a>
+				<a href="grafico.html">Zero Type</a>
 			</div>
 			<ul id="navigation">
 				<li class="active">
