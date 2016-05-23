@@ -18,7 +18,7 @@
 	<div id="header">
 		<div>
 			<div class="logo">
-				<a href="index.html">Zero Type</a>
+				<a href="grafico.html">Zero Type</a>
 			</div>
 			<ul id="navigation">
 				<li>
@@ -80,7 +80,7 @@
 				<a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a><a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a><a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a><a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="tumbler"></a>
 			</div>
 			<p>
-				© 2023 Zerotype. All Rights Reserved.
+				© 2016 C&eacute;sar Ibarra Trejo
 			</p>
 		</div>
 	</div>

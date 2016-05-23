@@ -275,6 +275,10 @@ p a {
 	display: block;
 	text-align: right;
 }
+.libro li > p span, .post > span {
+	display: block;
+	text-align: left;
+}
 .posts {
 	border-top: 1px solid #d5d5d5;
 }

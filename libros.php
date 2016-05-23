@@ -1,9 +1,16 @@
+<?php
+	include_once('conexion.inc.php');
+	$link=conectar();
+	$qry_libros="call sp_lista_libros()";
+    $rst_libros=$link->Execute($qry_libros);
+?>
+
 <!DOCTYPE HTML>
 <!-- Website template by freewebsitetemplates.com -->
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Cat&aacute;logo - Caf&eacute; y libros</title>
+	<title>Libros - Caf&eacute; y libros</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
@@ -14,7 +21,7 @@
 			</div>
 			<ul id="navigation">
 				<li>
-					<a href="index.html">Inicio</a>
+					<a href="index.php">Inicio</a>
 				</li>
 				<li class="active">
 					<a href="catalogo.html">Cat&aacute;logo</a>
@@ -32,23 +39,31 @@
 		</div>
 	</div>
 	<div id="contents">
-		<div class="features">
+		<div class="main">
 			<h1>Cat&aacute;logo</h1>
-			<p>
-				Navega por nuestra selecci&oacute;n de libros.
-			</p>
-			<div style= "float: left; width: 400px">
-				<a href="libros.php"><h2>Biblioteca Virtual</h2></a>
-				<p>
-					Aqu&iacute; encontrar&aacute;s nuestros libros en formato digital.
-				</p>
-			</div>
-			<div style = "float: right; width: 400px">
-				<h2>Enviado por usuarios</h2>
-				<p>
-					Accede a nuestro apartado de contenido enviado por nuestros lectores.
-				</p>
-			</div>
+			<ul class="libro">
+				<?php
+					if($rst_libros->RecordCount()){
+						while(!$rst_libros->EOF){
+				?>
+				<li>
+					
+					<h2><?php print $rst_libros->fields('titulo'); ?><span class="author"><?php print $rst_libros->fields('autor'); ?></br><?php print $rst_libros->fields('genero'); ?> </br>A&ntilde;o: <?php print $rst_libros->fields('ano'); ?></br><?php print $rst_libros->fields('edicion'); ?></br>Editorial: <?php print $rst_libros->fields('editorial'); ?></br>P&aacute;ginas: <?php print $rst_libros->fields('pags'); ?></span></h1>
+					<p>
+						<?php print $rst_libros->fields('sinopsis'); ?>
+					</p>
+				</li>
+						<?php
+							$rst_libros->MoveNext();
+							}
+						}?>
+			</ul>
+		</div>
+		<div class="sidebar">
+			<h1>Buscar</h1>
+			<ul class="posts">
+				
+			</ul>
 		</div>
 	</div>
 	<div id="footer">
@@ -57,7 +72,7 @@
 				<a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a><a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a><a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a><a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="tumbler"></a>
 			</div>
 			<p>
-				© 2023 C&eacute;sar Ibarra Trejo.
+				© 2016 C&eacute;sar Ibarra Trejo.
 			</p>
 		</div>
 	</div>
